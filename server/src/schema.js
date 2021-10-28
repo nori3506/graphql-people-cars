@@ -1,24 +1,6 @@
 import { gql } from "apollo-server-express";
 import { find, remove } from "lodash";
 
-// const contacts = [
-//   {
-//     id: "1",
-//     firstName: "Noris",
-//     lastName: "Nishiyama",
-//   },
-//   {
-//     id: "2",
-//     firstName: "Paul",
-//     lastName: "Jordan",
-//   },
-//   {
-//     id: "3",
-//     firstName: "Jim",
-//     lastName: "Tomas",
-//   },
-// ];
-
 const people = [
   {
     id: "1",
@@ -137,12 +119,31 @@ const typeDefs = gql`
   type Query {
     person(id: String!): People
     people: [People]
+    car(id: String!): Car
+    cars: [Car]
   }
 
   type Mutation {
     addPerson(id: String!, firstName: String!, lastName: String!): People
     updatePerson(id: String, firstName: String!, lastName: String!): People
     removePerson(id: String!): People
+    addCar(
+      id: String!
+      year: String!
+      make: String!
+      model: String!
+      price: String!
+      personId: String!
+    ): Car
+    updateCar(
+      id: String!
+      year: String!
+      make: String!
+      model: String!
+      price: String!
+      personId: String!
+    ): Car
+    removeCar(id: String!): Car
   }
 `;
 
@@ -152,6 +153,11 @@ const resolvers = {
       return find(people, { id: args.id });
     },
     people: () => people,
+
+    car(parent, args, context, info) {
+      return find(car, { id: args.id });
+    },
+    cars: () => cars,
   },
   Mutation: {
     addPerson: (root, args) => {
@@ -182,8 +188,40 @@ const resolvers = {
       remove(people, (c) => {
         return c.id === removedPerson.id;
       });
-
       return removedPerson;
+    },
+    addCar: (root, args) => {
+      const newCar = {
+        id: args.id,
+        year: args.year,
+        make: args.make,
+        model: args.model,
+        price: args.price,
+        personId: args.personId,
+      };
+      cars.push(newCar);
+      return newCar;
+    },
+    updateCar: (root, args) => {
+      const car = find(cars, { id: args.id });
+      if (!car) {
+        throw new Error(`Couldn't find any car with id ${args.id}`);
+      }
+      car.year = args.year;
+      car.make = args.make;
+      car.model = args.model;
+      car.price = args.price;
+      return car;
+    },
+    removeCar: (root, args) => {
+      const removedCar = find(cars, { id: args.id });
+      if (!removedCar) {
+        throw new Error(`Couldn't find any car with id ${args.id}`);
+      }
+      remove(cars, (c) => {
+        return c.id === removedCar.id;
+      });
+      return removedCar;
     },
   },
 };
