@@ -44,42 +44,46 @@ const AddContact = () => {
   };
 
   return (
-    <Form
-      form={form}
-      onFinish={onFinish}
-      name="add-contact-form"
-      layout="inline"
-      size="large"
-      style={{ marginBottom: "40px" }}
-    >
-      <Form.Item
-        name="firstName"
-        rules={[{ required: true, message: "please input your first name" }]}
+    <>
+      <h2>Add People!</h2>
+      <Form
+        form={form}
+        onFinish={onFinish}
+        name="add-contact-form"
+        layout="inline"
+        size="large"
+        style={{ marginBottom: "40px" }}
       >
-        <Input placeholder="John" />
-      </Form.Item>
+        <Form.Item
+          name="firstName"
+          rules={[{ required: true, message: "please input your first name" }]}
+        >
+          <Input placeholder="John" />
+        </Form.Item>
 
-      <Form.Item
-        name="lastName"
-        rules={[{ required: true, message: "please input your last name" }]}
-      >
-        <Input placeholder="Ropes" />
-      </Form.Item>
-      <Form.Item shouldUpdate={true}>
-        {() => (
-          <Button
-            type="primary"
-            htmlType="submit"
-            disabled={
-              !form.isFieldsTouched(true) ||
-              form.getFieldsError().filter(({ errors }) => errors.length).length
-            }
-          >
-            Add People
-          </Button>
-        )}
-      </Form.Item>
-    </Form>
+        <Form.Item
+          name="lastName"
+          rules={[{ required: true, message: "please input your last name" }]}
+        >
+          <Input placeholder="Ropes" />
+        </Form.Item>
+        <Form.Item shouldUpdate={true}>
+          {() => (
+            <Button
+              type="primary"
+              htmlType="submit"
+              disabled={
+                !form.isFieldsTouched(true) ||
+                form.getFieldsError().filter(({ errors }) => errors.length)
+                  .length
+              }
+            >
+              Add People
+            </Button>
+          )}
+        </Form.Item>
+      </Form>
+    </>
   );
 };
 
