@@ -10,7 +10,7 @@ const getStyles = () => ({
 
 const Title = () => {
   const styles = getStyles();
-  return <h1 style={styles.title}>Contact List</h1>;
+  return <h1 style={styles.title}>People and Cars List</h1>;
 };
 
 export default Title;

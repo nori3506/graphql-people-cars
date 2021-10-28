@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import AddContact from "./components/form/AddContact";
+import AddPerson from "./components/form/AddContact";
 import Title from "./components/layouts/Title";
 import Contacts from "./components/lists/Contacts";
 
@@ -15,7 +15,7 @@ const App = () => (
   <ApolloProvider client={client}>
     <div className="App">
       <Title />
-      <AddContact />
+      <AddPerson />
       <Contacts />
     </div>
   </ApolloProvider>

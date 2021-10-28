@@ -1,18 +1,18 @@
 import React from "react";
 import { DeleteOutlined } from "@ant-design/icons";
 import { useMutation } from "@apollo/client";
-import { GET_CONTACTS, REMOVE_CONTACT } from "../../queries";
+import { GET_PEOPLE, REMOVE_PERSON } from "../../queries";
 import { filter } from "lodash";
 
 const Removecontact = ({ id, firstName, lastName }) => {
-  const [removeContact] = useMutation(REMOVE_CONTACT, {
-    update(cache, { data: { removeContact } }) {
-      const { contacts } = cache.readQuery({ query: GET_CONTACTS });
+  const [removePerson] = useMutation(REMOVE_PERSON, {
+    update(cache, { data: { removePerson } }) {
+      const { people } = cache.readQuery({ query: GET_PEOPLE });
       cache.writeQuery({
-        query: GET_CONTACTS,
+        query: GET_PEOPLE,
         data: {
-          contacts: filter(contacts, (c) => {
-            return c.id !== removeContact.id;
+          people: filter(people, (c) => {
+            return c.id !== removePerson.id;
           }),
         },
       });
@@ -24,14 +24,14 @@ const Removecontact = ({ id, firstName, lastName }) => {
       "are you sure you want to delete this contact?"
     );
     if (result) {
-      removeContact({
+      removePerson({
         variables: {
           id,
         },
         optimisticResponse: {
           __typename: "Mutation",
-          removeContact: {
-            __typename: "Contact",
+          removePerson: {
+            __typename: "People",
             id,
             firstName,
             lastName,

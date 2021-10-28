@@ -1,23 +1,23 @@
 import { gql } from "apollo-server-express";
 import { find, remove } from "lodash";
 
-const contacts = [
-  {
-    id: "1",
-    firstName: "Noris",
-    lastName: "Nishiyama",
-  },
-  {
-    id: "2",
-    firstName: "Paul",
-    lastName: "Jordan",
-  },
-  {
-    id: "3",
-    firstName: "Jim",
-    lastName: "Tomas",
-  },
-];
+// const contacts = [
+//   {
+//     id: "1",
+//     firstName: "Noris",
+//     lastName: "Nishiyama",
+//   },
+//   {
+//     id: "2",
+//     firstName: "Paul",
+//     lastName: "Jordan",
+//   },
+//   {
+//     id: "3",
+//     firstName: "Jim",
+//     lastName: "Tomas",
+//   },
+// ];
 
 const people = [
   {
@@ -135,55 +135,55 @@ const typeDefs = gql`
   }
 
   type Query {
-    contact(id: String!): Contact
-    contacts: [Contact]
+    person(id: String!): People
+    people: [People]
   }
 
   type Mutation {
-    addContact(id: String!, firstName: String!, lastName: String!): Contact
-    updateContact(id: String, firstName: String!, lastName: String!): Contact
-    removeContact(id: String!): Contact
+    addPerson(id: String!, firstName: String!, lastName: String!): People
+    updatePerson(id: String, firstName: String!, lastName: String!): People
+    removePerson(id: String!): People
   }
 `;
 
 const resolvers = {
   Query: {
-    contact(parent, args, context, info) {
-      return find(contacts, { id: args.id });
+    person(parent, args, context, info) {
+      return find(people, { id: args.id });
     },
-    contacts: () => contacts,
+    people: () => people,
   },
   Mutation: {
-    addContact: (root, args) => {
-      const newContact = {
+    addPerson: (root, args) => {
+      const newPerson = {
         id: args.id,
         firstName: args.firstName,
         lastName: args.lastName,
       };
-      contacts.push(newContact);
-      return newContact;
+      people.push(newPerson);
+      return newPerson;
     },
-    updateContact: (root, args) => {
-      const contact = find(contacts, { id: args.id });
-      if (!contact) {
-        throw new Error(`Couldn't find contact with id ${args.id}`);
+    updatePerson: (root, args) => {
+      const person = find(people, { id: args.id });
+      if (!person) {
+        throw new Error(`Couldn't find any person with id ${args.id}`);
       }
 
-      contact.firstName = args.firstName;
-      contact.lastName = args.lastName;
+      person.firstName = args.firstName;
+      person.lastName = args.lastName;
 
-      return contact;
+      return person;
     },
-    removeContact: (root, args) => {
-      const removedContact = find(contacts, { id: args.id });
-      if (!removedContact) {
-        throw new Error(`Couldn't find contact with id ${args.id}`);
+    removePerson: (root, args) => {
+      const removedPerson = find(people, { id: args.id });
+      if (!removedPerson) {
+        throw new Error(`Couldn't find any person with id ${args.id}`);
       }
-      remove(contacts, (c) => {
-        return c.id === removedContact.id;
+      remove(people, (c) => {
+        return c.id === removedPerson.id;
       });
 
-      return removedContact;
+      return removedPerson;
     },
   },
 };

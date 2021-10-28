@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
 import { last } from "lodash";
 
-export const GET_CONTACTS = gql`
+export const GET_PEOPLE = gql`
   {
-    contacts {
+    people {
       id
       firstName
       lastName
@@ -11,9 +11,9 @@ export const GET_CONTACTS = gql`
   }
 `;
 
-export const ADD_CONTACT = gql`
-  mutation AddContact($id: String!, $firstName: String!, $lastName: String!) {
-    addContact(id: $id, firstName: $firstName, lastName: $lastName) {
+export const ADD_PERSON = gql`
+  mutation AddPerson($id: String!, $firstName: String!, $lastName: String!) {
+    addPerson(id: $id, firstName: $firstName, lastName: $lastName) {
       id
       firstName
       lastName
@@ -21,13 +21,9 @@ export const ADD_CONTACT = gql`
   }
 `;
 
-export const UPDATE_CONTACT = gql`
-  mutation UpdateContact(
-    $id: String!
-    $firstName: String!
-    $lastName: String!
-  ) {
-    updateContact(id: $id, firstName: $firstName, lastName: $lastName) {
+export const UPDATE_PERSON = gql`
+  mutation UpdatePerson($id: String!, $firstName: String!, $lastName: String!) {
+    updatePerson(id: $id, firstName: $firstName, lastName: $lastName) {
       id
       firstName
       lastName
@@ -35,9 +31,9 @@ export const UPDATE_CONTACT = gql`
   }
 `;
 
-export const REMOVE_CONTACT = gql`
-  mutation RemoveContact($id: String!) {
-    removeContact(id: $id) {
+export const REMOVE_PERSON = gql`
+  mutation RemovePerson($id: String!) {
+    removePerson(id: $id) {
       id
       firstName
       lastName

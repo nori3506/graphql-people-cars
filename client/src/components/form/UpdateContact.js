@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 
 import { Form, Input, Button } from "antd";
 import { useMutation } from "@apollo/client";
-import { UPDATE_CONTACT } from "../../queries";
+import { UPDATE_PERSON } from "../../queries";
 
 const UpdateContact = (props) => {
   const [id] = useState(props.id);
   const [firstName, setFirstName] = useState(props.firstName);
   const [lastName, setLastName] = useState(props.lastName);
-  const [updateContact] = useMutation(UPDATE_CONTACT);
+  const [updatePerson] = useMutation(UPDATE_PERSON);
 
   const [form] = Form.useForm();
   const [, forceUpdate] = useState();
@@ -34,7 +34,7 @@ const UpdateContact = (props) => {
   const onFinish = (values) => {
     const { firstName, lastName } = values;
 
-    updateContact({
+    updatePerson({
       variables: {
         id,
         firstName,
@@ -42,8 +42,8 @@ const UpdateContact = (props) => {
       },
       optimisticResponse: {
         __typename: "Mutation",
-        updateContact: {
-          __typename: "Contact",
+        updatePerson: {
+          __typename: "People",
           id,
           firstName,
           lastName,
@@ -92,7 +92,7 @@ const UpdateContact = (props) => {
               form.getFieldsError().filter(({ errors }) => errors.length).length
             }
           >
-            Update Contact
+            Update Person
           </Button>
         )}
       </Form.Item>
