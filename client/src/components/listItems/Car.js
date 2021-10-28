@@ -4,7 +4,10 @@ import RemovePerson from "../buttons/RemoveContact";
 import { EditOutlined } from "@ant-design/icons";
 import UpdatePerson from "../form/UpdateContact";
 const getStyles = () => ({
-  card: { width: "500px" },
+  card: {
+    width: "500px",
+    backgroundColor: "lightgreen",
+  },
 });
 
 const Car = (props) => {

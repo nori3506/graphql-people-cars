@@ -3,6 +3,8 @@ import { Card } from "antd";
 import RemovePerson from "../buttons/RemoveContact";
 import { EditOutlined } from "@ant-design/icons";
 import UpdatePerson from "../form/UpdateContact";
+import Cars from "../lists/Cars";
+
 const getStyles = () => ({
   card: { width: "500px" },
 });
@@ -42,22 +44,28 @@ const Contact = (props) => {
           updateStateVariable={updateStateVariable}
         />
       ) : (
-        <Card
-          style={styles.card}
-          actions={[
-            <EditOutlined
-              key="edit"
-              onClick={handleButtonClick}
-              id={id}
-              firstName={firstName}
-              lastName={lastName}
-            />,
-            <RemovePerson id={id} firstName={firstName} lastName={lastName} />,
-          ]}
-        >
-          {firstName}
-          {lastName}
-        </Card>
+        <>
+          <Card
+            title={firstName + " " + lastName}
+            extra={<a href="#">Learn More</a>}
+            actions={[
+              <EditOutlined
+                key="edit"
+                onClick={handleButtonClick}
+                id={id}
+                firstName={firstName}
+                lastName={lastName}
+              />,
+              <RemovePerson
+                id={id}
+                firstName={firstName}
+                lastName={lastName}
+              />,
+            ]}
+          >
+            <Cars personId={props.id} name={props.firstName} />
+          </Card>
+        </>
       )}
     </>
   );
