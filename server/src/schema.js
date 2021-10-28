@@ -95,12 +95,6 @@ const cars = [
 ];
 
 const typeDefs = gql`
-  type Contact {
-    id: String!
-    firstName: String
-    lastName: String
-  }
-
   type People {
     id: String!
     firstName: String
@@ -155,7 +149,7 @@ const resolvers = {
     people: () => people,
 
     car(parent, args, context, info) {
-      return find(car, { id: args.id });
+      return find(cars, { id: args.id });
     },
     cars: () => cars,
   },
