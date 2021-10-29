@@ -1,5 +1,5 @@
 import React from "react";
-import AddPerson from "../form/AddContact";
+import AddPerson from "../form/AddPerson";
 import AddCar from "../form/AddCar";
 import Contacts from "../lists/Contacts";
 const Top = () => {
