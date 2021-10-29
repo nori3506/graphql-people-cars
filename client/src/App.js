@@ -1,11 +1,10 @@
 import React from "react";
 import "./App.css";
-
+import { BrowserRouter, Route } from "react-router-dom";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import AddPerson from "./components/form/AddContact";
 import Title from "./components/layouts/Title";
-import Contacts from "./components/lists/Contacts";
-import AddCar from "./components/form/AddCar";
+import Top from "./components/pages/Top";
+import Person from "./components/pages/Person";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -16,9 +15,10 @@ const App = () => (
   <ApolloProvider client={client}>
     <div className="App">
       <Title />
-      <AddPerson />
-      <AddCar />
-      <Contacts />
+      <BrowserRouter>
+        <Route exact path="/" component={Top} />
+        <Route exact path="/:id" component={Person} />
+      </BrowserRouter>
     </div>
   </ApolloProvider>
 );
