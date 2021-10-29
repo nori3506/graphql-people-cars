@@ -1,13 +1,13 @@
 import React from "react";
 import AddPerson from "../form/AddPerson";
 import AddCar from "../form/AddCar";
-import Contacts from "../lists/Contacts";
+import People from "../lists/People";
 const Top = () => {
   return (
     <>
       <AddPerson />
       <AddCar />
-      <Contacts />
+      <People />
     </>
   );
 };

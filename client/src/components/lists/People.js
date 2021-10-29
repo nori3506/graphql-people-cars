@@ -1,6 +1,6 @@
 import React from "react";
 import { List } from "antd";
-import Contact from "../listItems/Contact";
+import Person from "../listItems/Person";
 import { useQuery } from "@apollo/client";
 import { GET_PEOPLE } from "../../queries";
 
@@ -11,7 +11,7 @@ const getStyles = () => ({
   },
 });
 
-const Contacts = () => {
+const People = () => {
   const styles = getStyles();
 
   const { loading, error, data } = useQuery(GET_PEOPLE);
@@ -21,11 +21,11 @@ const Contacts = () => {
     <List grid={{ gutter: 20, column: 1 }} style={styles.list}>
       {data.people.map(({ id, firstName, lastName }) => (
         <List.Item>
-          <Contact id={id} key={id} firstName={firstName} lastName={lastName} />
+          <Person id={id} key={id} firstName={firstName} lastName={lastName} />
         </List.Item>
       ))}
     </List>
   );
 };
 
-export default Contacts;
+export default People;

@@ -10,7 +10,7 @@ const getStyles = () => ({
   card: { width: "500px" },
 });
 
-const Contact = (props) => {
+const Person = (props) => {
   const styles = getStyles();
   const [id] = useState(props.id);
   const [firstName, setFirstName] = useState(props.firstName);
@@ -72,4 +72,4 @@ const Contact = (props) => {
   );
 };
 
-export default Contact;
+export default Person;
