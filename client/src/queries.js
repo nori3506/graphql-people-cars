@@ -11,6 +11,16 @@ export const GET_PEOPLE = gql`
   }
 `;
 
+export const GET_PERSON = gql`
+  query People($id: String!) {
+    person(id: $id) {
+      id
+      firstName
+      lastName
+    }
+  }
+`;
+
 export const GET_CARS = gql`
   {
     cars {
