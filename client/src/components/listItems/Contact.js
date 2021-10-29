@@ -4,6 +4,7 @@ import RemovePerson from "../buttons/RemoveContact";
 import { EditOutlined } from "@ant-design/icons";
 import UpdatePerson from "../form/UpdateContact";
 import Cars from "../lists/Cars";
+import { Link } from "react-router-dom";
 
 const getStyles = () => ({
   card: { width: "500px" },
@@ -47,7 +48,6 @@ const Contact = (props) => {
         <>
           <Card
             title={firstName + " " + lastName}
-            extra={<a href="#">Learn More</a>}
             actions={[
               <EditOutlined
                 key="edit"
@@ -64,6 +64,7 @@ const Contact = (props) => {
             ]}
           >
             <Cars personId={props.id} name={props.firstName} />
+            <Link to={`/people/${props.id}`}>Learn More </Link>
           </Card>
         </>
       )}

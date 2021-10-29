@@ -17,7 +17,7 @@ const App = () => (
       <Title />
       <BrowserRouter>
         <Route exact path="/" component={Top} />
-        <Route exact path="/:id" component={Person} />
+        <Route exact path="/people/:id" component={Person} />
       </BrowserRouter>
     </div>
   </ApolloProvider>

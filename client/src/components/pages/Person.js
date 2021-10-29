@@ -1,7 +1,15 @@
+import { Button } from "antd";
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Person = () => {
-  return <div>ukon</div>;
+const Person = (props) => {
+  return (
+    <>
+      <Button>
+        <Link to="/">Go Back</Link>
+      </Button>
+    </>
+  );
 };
 
 export default Person;
