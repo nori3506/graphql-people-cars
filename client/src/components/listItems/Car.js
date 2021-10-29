@@ -83,11 +83,11 @@ const Car = (props) => {
             />,
           ]}
         >
-          {year}
-          {make}
-          {model}
-          {price}
-          {personId}
+          <p>year: {year}</p>
+          <p>maker: {make}</p>
+          <p>model: {model}</p>
+          <p>price: ${price}</p>
+          <p>year: {year}</p>
         </Card>
       )}
     </>
