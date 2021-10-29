@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card } from "antd";
-import RemovePerson from "../buttons/RemoveContact";
+import RemovePerson from "../buttons/RemovePerson";
 import { EditOutlined } from "@ant-design/icons";
 import UpdatePerson from "../form/UpdateContact";
 import Cars from "../lists/Cars";
