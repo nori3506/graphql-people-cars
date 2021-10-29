@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Card } from "antd";
-import RemovePerson from "../buttons/RemoveContact";
 import { EditOutlined } from "@ant-design/icons";
-import UpdatePerson from "../form/UpdateContact";
+import RemoveCar from "../buttons/RemoveCar";
+import UpdateCar from "../form/UpdateCar";
 const getStyles = () => ({
   card: {
     width: "500px",
@@ -49,7 +49,7 @@ const Car = (props) => {
   return (
     <>
       {editMode ? (
-        <UpdatePerson
+        <UpdateCar
           id={props.id}
           year={props.year}
           make={props.make}
@@ -73,7 +73,7 @@ const Car = (props) => {
               price={price}
               personId={personId}
             />,
-            <RemovePerson
+            <RemoveCar
               id={id}
               year={year}
               make={make}
