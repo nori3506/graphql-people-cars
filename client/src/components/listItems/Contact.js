@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card } from "antd";
 import RemovePerson from "../buttons/RemovePerson";
 import { EditOutlined } from "@ant-design/icons";
-import UpdatePerson from "../form/UpdateContact";
+import UpdatePerson from "../form/UpdatePerson";
 import Cars from "../lists/Cars";
 import { Link } from "react-router-dom";
 
